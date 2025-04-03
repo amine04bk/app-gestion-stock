@@ -1,0 +1,214 @@
+/** style added **/
+.card-login.card img {
+  margin: 0 auto;
+  display: block;
+}
+
+.card-login.card {
+  margin-top: 20px;
+}
+
+.full-page:after,
+.full-page:before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.full-page:before {
+  opacity: .33;
+  background: #000;
+}
+
+.full-page>.content {
+  min-height: calc(100vh - 70px);
+  z-index: 4;
+  position: relative;
+}
+
+.full-page-background {
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  display: block;
+  top: 0;
+  left: 0;
+  background-size: cover;
+  background-position: 50%;
+}
+
+.dropdown-menu {
+  left: initial !important;
+  right: 0 !important;
+}
+
+.main-panel .navbar {
+  padding: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.Toastify__toast--success {
+  background: #07bc0c !important;
+  color: white !important;
+}
+
+.Toastify__progress-bar--success,
+.Toastify__progress-bar--error,
+.Toastify__progress-bar--warning {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+.Toastify__toast-body strong {
+  color: white;
+  font-size: 14px !important;
+}
+
+.Toastify__toast--error {
+  background-color: #e74c3c !important;
+}
+
+.Toastify__toast--warning {
+  background-color: #f1c40f !important;
+}
+
+.Toastify__toast-icon {
+  display: none !important;
+}
+
+.Toastify__toast-body i {
+  margin-right: 5px;
+}
+
+.nav-header {
+  flex-grow: initial;
+}
+
+/* .card .card-footer {
+  margin: 10px auto;
+} */
+
+::-webkit-scrollbar {
+  height: 7px;
+  width: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ddd;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bf360c;
+}
+
+.login-page .btn {
+  margin: 10px auto;
+  display: block;
+}
+
+.css-1llu0od {
+  display: block !important;
+}
+
+.custom-pagination {
+  float: right;
+}
+
+.custom-pagination i {
+  color: #757575;
+  margin-top: 10px;
+}
+
+.custom-pagination .fa-solid.fa-angles-right {
+  margin-left: 15px;
+  margin-right: 10px;
+}
+
+thead.MuiTableHead-root th:nth-last-child(1) .css-pwcg7p-MuiCollapse-root,
+.table-store thead.MuiTableHead-root th:nth-last-child(2) .css-pwcg7p-MuiCollapse-root,
+.table-store thead.MuiTableHead-root th:nth-last-child(3) .css-pwcg7p-MuiCollapse-root{
+  display: none;
+}
+
+.password-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+#togglePassword {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.react-select__single-value.css-qc6sy-singleValue {
+  position: absolute !important;
+  top: 5px !important;
+}
+
+.react-select__placeholder {
+  position: absolute !important;
+}
+
+.react-select__control {
+  position: relative !important;
+}
+
+.react-select__menu {
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+.react-tel-input .form-control {
+  background-color: #FFFFFF !important;
+    border: 1px solid #E3E3E3!important;
+    border-radius: 4px !important;
+    color: #565656 !important;
+    height: 40px !important;
+    box-shadow: none !important;
+    width: 100% !important;
+}
+
+.sweet-alert {
+  top: 50%;
+}
+
+.form-check {
+  padding: 0 !important;
+}
+textarea {
+  height: initial !important;
+}
+
+.show-table label {
+  color: transparent;
+  height: 33px;
+  width: 33px;
+}
+
+.span-login {
+  width: 85% !important;
+  margin: 0 auto;
+  display: block !important;
+}
+
+.span-login a {
+  margin-left: 5px;
+  color: #049f0c !important;
+  cursor: pointer;
+}
+
+.chat-style {
+  cursor: pointer;
+}
