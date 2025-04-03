@@ -13,7 +13,7 @@ public interface Userservice {
     User findById (Long id);
     User findByName(String username);
     User updateUser(User user ,Long id) throws MessagingException;
-    User getById(String id);
+    User getById(Long id);
 
 
 }

@@ -29,39 +29,29 @@ public class ApplicationsApplication {
     @Bean
     CommandLineRunner start() {
 
-
         return args -> {
             System.out.println("run");
             List<Role> roles = (List<Role>) roleRepository.findAll();
             if (roles.isEmpty()) {
-                Role role = new Role();
-                role.setName("ROLE_USER");
-                roleRepository.save(role);
-                Role role2 = new Role();
-                role2.setName("ROLE_ADMIN");
-                roleRepository.save(role2);
-                Role roleResponsable= new Role();
-                roleResponsable.setName("ROLE_RESPONSABLE");
-                roleRepository.save(roleResponsable);
-                Role roleGestionnaire= new Role();
-                roleGestionnaire.setName("ROLE_GESTIONNAIRE");
-                roleRepository.save(roleGestionnaire);
-
+                Role roleAdmin = new Role();
+                roleAdmin.setName("Admin");
+                roleRepository.save(roleAdmin);
 
             }
-            if (!userRepository.existsByEmail("Seif@gmail.com")) {
-                String bcrypt = webSecurityConfig.passwordEncoder().encode("12345678");
-                List<Role> rolesAdmin = new ArrayList<>();
-                Role r = roleRepository.findByName("ROLE_ADMIN")
+            if (!userRepository.existsByEmail("khalil@gmail.com")) {
+                String bcrypt = webSecurityConfig.passwordEncoder().encode("123");
+//                List<Role> rolesAdmin = new ArrayList<>();
+                Role r = roleRepository.findByName("Admin")
                         .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                rolesAdmin.add(r);
+//                rolesAdmin.add(r);
                 User user = new User();
-                user.setRoles(rolesAdmin);
-                user.setUsername("Seif");
+                //user.setRoles(rolesAdmin);
+                user.setRole(r);
+                user.setUsername("khalil");
                 user.setPassword(bcrypt);
-                user.setEmail("Seif@gmail.com");
+                user.setEmail("khalil@gmail.com");
                 userRepository.save(user);
-            }
+          }
         };
     }
 

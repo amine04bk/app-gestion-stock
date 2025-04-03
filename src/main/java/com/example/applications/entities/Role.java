@@ -14,16 +14,16 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Role")
+@Table(name="role")
 public class Role {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="role_Id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
-
     private String name;
-    @ManyToMany(mappedBy="roles")
-    @JsonIgnore
-    private List<User> users;
+    /* 1- Admin 2- Chef Entreprise 3- Employé*/
+//    @ManyToMany(mappedBy="roles")
+//    @JsonIgnore
+//    private List<User> users;
 
 }

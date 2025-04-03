@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -50,7 +51,12 @@ public class AuthController {
                         new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
                 SecurityContextHolder.getContext().setAuthentication(authentication);
                 String jwt = jwtUtils.generateJwtToken(authentication);
-
+                String expirationDateString = jwtUtils.getExpirationDateAsString(jwt);
+                if (expirationDateString != null) {
+                    System.out.println("Token Expiration Date: " + expirationDateString);
+                } else {
+                    System.out.println("Failed to retrieve the expiration date from the token.");
+                }
                 UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
                 List<String> roles = userDetails.getAuthorities().stream()
                         .map(item -> item.getAuthority())
@@ -60,7 +66,7 @@ public class AuthController {
                         userDetails.getId(),
                         userDetails.getUsername(),
                         userDetails.getEmail(),
-                        roles));
+                        roles,expirationDateString));
             } catch (BadCredentialsException e) {
                 // Gérer l'erreur lorsque les informations d'identification sont incorrectes
                 return ResponseEntity
@@ -93,39 +99,37 @@ public class AuthController {
         List<String> strRoles = signUpRequest.getRole();
         List<Role> roles = new ArrayList();
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName("ROLE_USER")
+            Role userRole = roleRepository.findByName("Employé")
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
             strRoles.forEach(role -> {
                 switch (role) {
                     case "admin":
-                        Role adminRole = roleRepository.findByName("ROLE_ADMIN")
+                        Role adminRole = roleRepository.findByName("Admin")
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(adminRole);
+                        //roles.add(adminRole);
+                        user.setRole(adminRole);
                         break;
                     case "res":
-                        Role managerRole = roleRepository.findByName("ROLE_RESPONSABLE")
+                        Role managerRole = roleRepository.findByName("Chef Entreprise")
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(managerRole);
-                        break;
-                    case "ges":
-                        Role gesRole = roleRepository.findByName("ROLE_GESTIONNAIRE")
-                                .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(gesRole);
+                        //roles.add(managerRole);
+                        user.setRole(managerRole);
                         break;
 
                     default:
-                        Role userRole = roleRepository.findByName("ROLE_USER")
+                        Role userRole = roleRepository.findByName("Employé")
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-                        roles.add(userRole);
+                        //roles.add(userRole);
+                        user.setRole(userRole);
                         break;
 
                 }
             });
         }
 
-        user.setRoles(roles);
+        //user.setRoles(roles);
         userRepository.save(user);
         return ResponseEntity.ok(new MessageResponse("Utilisateur enregistré avec succès !"));
     }

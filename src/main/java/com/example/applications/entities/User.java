@@ -14,27 +14,28 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="users")
+@Table(name="user")
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="user_Id")
     private Long id;
+
     @Column(name = "username")
     private String username;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "email")
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "users_roles",
-            joinColumns = { @JoinColumn(name = "user_Id") },
-            inverseJoinColumns = { @JoinColumn(name = "role_Id") })
-    private List<Role> roles;
+    @ManyToOne
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
 
     public User(String username, String password, String email) {
-this.username=username;
-    this.password=password;
-    this.email=email;
+        this.username=username;
+        this.password=password;
+        this.email=email;
     }
 }

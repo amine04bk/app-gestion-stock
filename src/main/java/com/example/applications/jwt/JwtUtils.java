@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Component
@@ -55,5 +56,30 @@ public class JwtUtils {
             logger.error("JWT claims string is empty: {}", e.getMessage());
         }
         return false;
+    }
+
+    // Method to retrieve the expiration date from JWT token
+    public Date getExpirationDateFromJwtToken(String token) {
+        try {
+            Claims claims = Jwts.parser()
+                    .setSigningKey(jwtSecret)
+                    .parseClaimsJws(token)
+                    .getBody();
+            return claims.getExpiration();
+        } catch (Exception e) {
+            logger.error("Could not extract expiration date from JWT token: {}", e.getMessage());
+            return null; // Return null or handle the error according to your needs
+        }
+    }
+
+    // Method to get the expiration date as a formatted string
+    public String getExpirationDateAsString(String token) {
+        Date expirationDate = getExpirationDateFromJwtToken(token);
+        if (expirationDate != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+            return sdf.format(expirationDate);
+        } else {
+            return null; // Handle the case where the date couldn't be retrieved
+        }
     }
 }

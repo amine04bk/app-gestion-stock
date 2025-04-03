@@ -1,7 +1,9 @@
 package com.example.applications.Services;
 
 import com.example.applications.Repository.UserRepository;
+import com.example.applications.entities.dto.UserDTO;
 import com.example.applications.entities.User;
+import com.example.applications.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements Userservice {
@@ -27,10 +30,13 @@ public class UserServiceImpl implements Userservice {
         return userRepository.save(user);
     }
 
+
+
     @Override
     public void DeleteUser(Long id) {
         userRepository.deleteById(id);
     }
+
     @Override
     public User findById(Long id) {
         return userRepository.findById(id).get();
@@ -45,17 +51,18 @@ public class UserServiceImpl implements Userservice {
     @Override
     public User updateUser(User user, Long id) throws MessagingException {
         user.setId(id);
-       User userToUpdate= userRepository.findById(id).get();
+        User userToUpdate = userRepository.findById(id).get();
 
 
         return userRepository.save(user);
     }
 
     @Override
-    public User getById(String id) {
-        return userRepository.findUserByUsername(id);
+    public User getById(Long id) {
+        return userRepository.findById(id).get();
 
     }
+
     public Optional<User> getUserFromToken(String token) {
         // Récupérer l'authentification actuelle à partir du contexte de sécurité
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -76,7 +83,12 @@ public class UserServiceImpl implements Userservice {
 
         return null; // Gérer le cas où l'utilisateur n'est pas trouvé
     }
-
-
+    public List<UserDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(UserMapper::toUserDTO)
+                .collect(Collectors.toList());
     }
+
+}
 

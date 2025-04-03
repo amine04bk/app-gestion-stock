@@ -9,14 +9,28 @@ public class JwtResponse {
     private String username;
     private String email;
     private List<String> roles;
+    private String dateExpiration; // Add this field
 
-    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles) {
+    // Constructor including the dateExpiration
+    public JwtResponse(String accessToken, Long id, String username, String email, List<String> roles, String dateExpiration) {
         this.token = accessToken;
         this.id = id;
         this.username = username;
         this.email = email;
         this.roles = roles;
+        this.dateExpiration = dateExpiration; // Initialize dateExpiration
     }
+
+    // Getter and setter for dateExpiration
+    public String getDateExpiration() {
+        return dateExpiration;
+    }
+
+    public void setDateExpiration(String dateExpiration) {
+        this.dateExpiration = dateExpiration;
+    }
+
+    // Other getters and setters
 
     public String getAccessToken() {
         return token;
@@ -62,4 +76,7 @@ public class JwtResponse {
         return roles;
     }
 
+    public void setRoles(List<String> roles) {
+        this.roles = roles;
+    }
 }

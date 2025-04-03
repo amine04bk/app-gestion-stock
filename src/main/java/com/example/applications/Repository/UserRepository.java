@@ -1,7 +1,5 @@
 package com.example.applications.Repository;
 
-
-
 import com.example.applications.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
@@ -15,6 +13,4 @@ public interface UserRepository extends JpaRepository<User,Long> {
     Boolean existsByEmail(String email);
     User findUserByUsername(String username);
     Optional<User> findByEmail(String email);
-
-
 }
