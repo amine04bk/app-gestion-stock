@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/errorTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/red"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/gold_color"
+            android:padding="15dp"
+            android:text="@string/commande_details_title"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:gravity="center" />
+
+        <TextView
+            android:id="@+id/confirmationStatusTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:stretchColumns="1">
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Numéro de Commande"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/numeroCommandeTextView"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Fournisseur"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/fournisseurTextView"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Date"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/dateTextView"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Montant Total HT"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/mntTotalHTTextView"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Montant Total TVA"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/mntTotalTVATextView"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow
+                android:background="@color/white"
+                android:padding="10dp">
+                <TextView
+                    android:text="Montant Total TTC"
+                    android:textStyle="bold"
+                    android:textSize="16sp" />
+                <TextView
+                    android:id="@+id/mntTotalTTCTextView"
+                    android:textSize="16sp" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:id="@+id/tableLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:stretchColumns="0,1,2" />
+
+        <Button
+            android:id="@+id/acceptButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/green"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:text="@string/accept_commande"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Gestion des Commandes</string>
+    <string name="welcome_message">Bienvenue dans l\'application</string>
+    <string name="login_title">Connexion Fournisseur</string>
+    <string name="email_hint">Email</string>
+    <string name="password_hint">Mot de passe</string>
+    <string name="login_button">Se connecter</string>
+    <string name="commandes_title">Mes Commandes</string>
+    <string name="commande_details_title">Détails de la Commande</string>
+    <string name="accept_commande">Accepter le commande</string>
+    <string name="invalid_credentials">Email ou mot de passe invalide</string>
+    <string name="commande_confirmed">Commande Confirmée</string>
+    <string name="commande_not_confirmed">Commande Non Confirmée</string>
+    <string name="commande_accepted_success">Commande acceptée avec succès</string>
+    <string name="commande_accept_error">Erreur lors de la confirmation de la commande</string>
+</resources>
